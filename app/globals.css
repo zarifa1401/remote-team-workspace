@@ -1,3 +1,14 @@
 @import "tailwindcss";
 
+.btn-primary {
+  @apply bg-brand text-white px-4 py-2 rounded-md hover:bg-brand-dark transition;
+}
+
+.card {
+  @apply bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition;
+}
+
+.section-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
 
