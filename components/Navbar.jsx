@@ -1,51 +1,33 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-
-export const links = [
-  { href: "/", label: "Dashboard" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-  { href: "/teamMembers", label: "Team Members" },
-  { href: "/tasks", label: "Tasks"},
-];
+"use client"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
+  const links = [
+    { name: "Dashboard", href: "/" },
+    { name: "Projects", href: "/projects" },
+    { name: "Team", href: "/team" },
+    { name: "Meetings", href: "/meetings" },
+    { name: "Support", href: "/contact" },
+  ]
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-lg">
-      <div className="container navbar-inner mx-auto flex items-center justify-between px-6 py-4">
-        
-        <Link
-          href="/"
-          className="logo text-2xl font-bold tracking-wide text-gray-900"
-        >
-          RTW <span className="text-blue-600">.</span>
-        </Link>
-
-        <nav className="nav-link flex items-center gap-8">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={
-                  isActive
-                    ? "nav-link active text-blue-600 font-semibold transition duration-300"
-                    : "nav-link text-gray-600 hover:text-blue-600 transition duration-300"
-                }
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+    <nav className="bg-white dark:bg-gray-800 shadow px-6 py-3 flex justify-between items-center">
+      <h1 className="text-lg font-bold text-brand dark:text-white">Remote Team Workspace</h1>
+      <div className="space-x-4">
+        {links.map(link => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className={`hover:text-brand transition ${
+              pathname === link.href ? "text-brand font-semibold" : "text-gray-700 dark:text-gray-300"
+            }`}
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
-    </header>
-  );
+    </nav>
+  )
 }

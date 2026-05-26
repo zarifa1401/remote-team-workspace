@@ -1,14 +1,25 @@
 @import "tailwindcss";
 
-.btn-primary {
-  @apply bg-brand text-white px-4 py-2 rounded-md hover:bg-brand-dark transition;
+body {
+  background: #f8fafc;
 }
 
-.card {
-  @apply bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition;
-}
+@layer components {
 
-.section-title {
-  @apply text-xl font-semibold text-gray-800 mb-4;
-}
+  .main-container {
+    @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
 
+  .card {
+    @apply bg-white rounded-3xl shadow-md p-6 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .primary-btn {
+    @apply bg-gradient-to-r from-pink-500 to-sky-500 text-white px-5 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold mb-6 text-slate-800;
+  }
+
+}
