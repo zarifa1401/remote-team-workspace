@@ -1,13 +1,16 @@
-import MeetingCard from "../../components/MeetingCard"
-import { meetings } from "../../data/meetings"
+import PageHeader from "@/components/ui/page-header";
+import MeetingsView from "@/components/views/meetings-view";
+import { meetings } from "@/data/workspace-data";
 
 export default function MeetingsPage() {
   return (
-    <div>
-      <h2 className="section-title">Upcoming Meetings</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {meetings.map(m => <MeetingCard key={m.title} {...m} />)}
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Meetings"
+        title="Upcoming meetings with clearer scheduling context."
+        description="Scan the next sessions by platform, timing, participants, and host without leaving the workspace layout."
+      />
+      <MeetingsView meetings={meetings} />
     </div>
-  )
+  );
 }

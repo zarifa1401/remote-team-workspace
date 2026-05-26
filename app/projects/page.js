@@ -1,19 +1,16 @@
-"use client"
-import { useState } from "react"
-import ProjectCard from "../../components/ProjectCard"
-import SearchBar from "../../components/SearchBar"
-import { projects as allProjects } from "../../data/projects"
+import PageHeader from "@/components/ui/page-header";
+import ProjectsView from "@/components/views/projects-view";
+import { projects } from "@/data/workspace-data";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState(allProjects)
-
   return (
-    <div>
-      <h2 className="section-title">Projects</h2>
-      <SearchBar data={allProjects} onFilter={setProjects} />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-        {projects.map(p => <ProjectCard key={p.id} {...p} />)}
-      </div>
+    <div className="space-y-6 ">
+      <PageHeader
+        eyebrow="Projects"
+        title="Every initiative in one polished portfolio view."
+        description="Browse delivery cards with shared styling, pastel status badges, hover motion, and quick access to deeper project details."
+      />
+      <ProjectsView projects={projects} />
     </div>
-  )
+  );
 }
