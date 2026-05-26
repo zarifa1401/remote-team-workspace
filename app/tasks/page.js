@@ -1,17 +1,16 @@
-import { tasks } from "../../data/tasks"
+import PageHeader from "@/components/ui/page-header";
+import TasksView from "@/components/views/tasks-view";
+import { tasks } from "@/data/workspace-data";
 
 export default function TasksPage() {
   return (
-    <div>
-      <h2 className="section-title">Tasks</h2>
-      <ul className="space-y-2">
-        {tasks.map(task => (
-          <li key={task.id} className="card flex justify-between">
-            <span>{task.title}</span>
-            <span className="text-sm text-brand">{task.status}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Tasks"
+        title="A clean kanban-style board for daily execution."
+        description="Track backlog, active work, reviews, and completed items in a layout that stays readable across desktop, tablet, and mobile."
+      />
+      <TasksView tasks={tasks} />
     </div>
-  )
+  );
 }

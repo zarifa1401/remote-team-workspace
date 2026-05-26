@@ -1,13 +1,16 @@
-import MemberCard from "../../components/MemberCard"
-import { team } from "../../data/team"
+import PageHeader from "@/components/ui/page-header";
+import TeamMembersView from "@/components/views/team-members-view";
+import { teamMembers } from "@/data/workspace-data";
 
-export default function TeamPage() {
+export default function TeamMembersPage() {
   return (
-    <div>
-      <h2 className="section-title">Team Members</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {team.map(m => <MemberCard key={m.name} {...m} />)}
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Team Members"
+        title="A modern people directory for distributed collaboration."
+        description="See roles, skills, availability, and contact actions inside the same card system used throughout the dashboard."
+      />
+      <TeamMembersView teamMembers={teamMembers} />
     </div>
-  )
+  );
 }
