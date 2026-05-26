@@ -1,28 +1,51 @@
-import './globals.css'
-import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
-import Footer from '../components/Footer'
-import ThemeToggle from '../components/ThemeToggle'
+import { Manrope, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+import AppShell from "@/components/layout/app-shell";
+import { ToastProvider } from "@/components/ui/toast-provider";
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
 
 export const metadata = {
-  title: 'Remote Team Workspace',
-  description: 'Manage projects, tasks, meetings, and collaboration',
-}
+  title: "Remote Team Workspace",
+  description: "A modern remote team management frontend built with Next.js and Tailwind CSS.",
+};
 
 export default function RootLayout({ children }) {
+  const themeScript = `
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("rtw-theme");
+        var systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  `;
+
   return (
-    <html lang="en">
-      <body className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-        <Sidebar />
-        <div className="flex flex-col flex-1">
-          <Navbar />
-          <main className="flex-1 p-6">{children}</main>
-          <div className="p-4 flex justify-center">
-            <ThemeToggle />
-          </div>
-          <Footer />
-        </div>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-full">
+        <ToastProvider>
+          <AppShell>{children}</AppShell>
+        </ToastProvider>
       </body>
     </html>
-  )
+  );
 }
