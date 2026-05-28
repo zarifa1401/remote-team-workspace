@@ -30,7 +30,7 @@ export default function CalendarPage() {
                   key={day}
                   className={`min-h-24 rounded-[22px] border p-3 ${
                     highlight
-                      ? "border-rose-200 bg-gradient-to-br from-rose-50 to-pink-50 dark:border-white/10 dark:from-white/10 dark:to-white/5"
+                      ? "border-rose-200 bg-linear-to-br from-rose-50 to-pink-50 dark:border-white/10 dark:from-white/10 dark:to-white/5"
                       : "border-rose-100 bg-white/75 dark:border-white/10 dark:bg-white/5"
                   }`}
                 >
@@ -53,7 +53,7 @@ export default function CalendarPage() {
             </div>
             <div className="mt-5 space-y-3">
               {calendarEvents.map((event) => (
-                <div key={event.id} className="rounded-[24px] border border-rose-100 bg-rose-50/60 p-4 dark:border-white/10 dark:bg-white/5">
+                <div key={event.id} className="rounded-3xl border border-rose-100 bg-rose-50/60 p-4 dark:border-white/10 dark:bg-white/5">
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <p className="text-sm font-semibold text-slate-900 dark:text-white">{event.title}</p>
@@ -78,7 +78,7 @@ export default function CalendarPage() {
             </div>
             <div className="mt-5 space-y-3">
               {meetings.slice(0, 3).map((meeting) => (
-                <div key={meeting.id} className="flex items-center justify-between gap-3 rounded-[24px] border border-rose-100 bg-white/75 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+                <div key={meeting.id} className="flex items-center justify-between gap-3 rounded-3xl border border-rose-100 bg-white/75 px-4 py-3 dark:border-white/10 dark:bg-white/5">
                   <div>
                     <p className="text-sm font-semibold text-slate-900 dark:text-white">{meeting.title}</p>
                     <p className="text-sm text-slate-500 dark:text-slate-300">{meeting.platform}</p>
