@@ -39,7 +39,7 @@ export default function TeamMemberCard({ member }) {
         ))}
       </div>
 
-      <div className="mt-6 grid gap-3 rounded-[24px] border border-rose-100 bg-rose-50/60 p-4 text-sm dark:border-white/10 dark:bg-white/5">
+      <div className="mt-6 grid gap-3 rounded-3xl border border-rose-100 bg-rose-50/60 p-4 text-sm dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center justify-between gap-3">
           <span className="text-slate-500 dark:text-slate-300">Location</span>
           <span className="font-medium text-slate-700 dark:text-white">{member.location}</span>
