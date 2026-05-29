@@ -386,7 +386,7 @@ export const teamMembers = [
     timezone: "GMT+5",
     availability: "In Meeting",
     status: "away",
-    email: "zarifarahmani99@gmail.com",
+    email: "zarifa@bloomspace.io",
   },
 ];
 
